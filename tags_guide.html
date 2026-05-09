@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>태그 가이드 — RoboPaper Top 500</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --surface-2: #f1f3f4;
+  --border: #dadce0;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-tertiary: #80868b;
+  --accent: #1a73e8;
+  --accent-hover: #1765cc;
+  --accent-bg: #e8f0fe;
+  --shadow-1: 0 1px 2px 0 rgba(60,64,67,.1), 0 1px 3px 1px rgba(60,64,67,.05);
+  --shadow-2: 0 1px 3px 0 rgba(60,64,67,.15), 0 4px 8px 3px rgba(60,64,67,.08);
+
+  --tag-문제정의: #6366f1;
+  --tag-평가축: #06b6d4;
+  --tag-방법전환: #3b82f6;
+  --tag-인프라: #22c55e;
+  --tag-경고신호: #ef4444;
+  --tag-통합정리: #a855f7;
+  --tag-스케일업: #f97316;
+  --tag-실사용전환: #14b8a6;
+  --tag-데이터전환: #f59e0b;
+  --tag-해부분석: #ec4899;
+  --tag-표준후보: #8b5cf6;
+  --tag-위험보류: #6b7280;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Roboto', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.app-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+.app-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 18px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background .15s;
+}
+.back-link:hover { background: var(--surface); text-decoration: none; color: var(--text-primary); }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 8px;
+}
+
+.logo-mark {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc04 75%, #ea4335 100%);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 14px;
+}
+
+.logo-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.logo-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 1px;
+}
+
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 120px;
+}
+
+.article-header {
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.lead {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 56px 0 20px;
+  color: var(--text-primary);
+}
+
+h2:first-of-type { margin-top: 0; }
+
+h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 28px 0 8px;
+  color: var(--text-primary);
+}
+
+p { margin-bottom: 14px; color: var(--text-primary); }
+
+p.muted { color: var(--text-secondary); }
+
+ul, ol {
+  margin: 12px 0 16px 28px;
+  color: var(--text-primary);
+}
+li { margin-bottom: 6px; }
+
+blockquote {
+  margin: 24px 0;
+  padding: 18px 24px;
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  font-size: 17px;
+  color: var(--text-primary);
+}
+blockquote.formula {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  background: var(--surface-2);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+th {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: var(--surface);
+}
+
+/* Tag definition grid */
+.tag-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+@media (max-width: 700px) {
+  .tag-grid { grid-template-columns: 1fr; }
+}
+
+.tag-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  transition: box-shadow .15s, border-color .15s;
+}
+.tag-card:hover {
+  box-shadow: var(--shadow-1);
+  border-color: transparent;
+}
+
+.tag-card-chip {
+  flex-shrink: 0;
+  width: 60px;
+  height: 28px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  align-self: flex-start;
+  margin-top: 1px;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+.tag-card-body { flex: 1; min-width: 0; }
+.tag-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+.tag-card-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Inline tag pills (for use within text) */
+.pill {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 11px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+/* Tier label */
+.tier-label {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.tier-S { background: #fef2f2; color: #dc2626; }
+.tier-A { background: #fff7ed; color: #ea580c; }
+
+/* Combo cards */
+.combo-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  transition: box-shadow .15s, border-color .15s;
+}
+.combo-card:hover {
+  box-shadow: var(--shadow-1);
+  border-color: transparent;
+}
+
+.combo-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.combo-name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--text-primary);
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+.combo-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.combo-plus { color: var(--text-tertiary); font-weight: 500; }
+.combo-desc {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.combo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 16px;
+  background: var(--accent-bg);
+  margin-top: 4px;
+}
+.combo-cta:hover { background: #d2e3fc; text-decoration: none; }
+
+/* Footer / final */
+.formula-final {
+  margin: 40px 0 24px;
+  padding: 32px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f0fe 100%);
+  border-radius: 16px;
+  text-align: center;
+}
+.formula-final-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.formula-final-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.formula-final-tags .pill { font-size: 14px; padding: 6px 14px; border-radius: 14px; }
+.formula-final-tags .op { color: var(--text-secondary); font-weight: 500; font-family: 'Roboto Mono', monospace; }
+.formula-final-note {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.toc {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 40px;
+  font-size: 13px;
+}
+.toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.toc ol { margin: 0 0 0 20px; }
+.toc li { margin-bottom: 2px; }
+.toc a { color: var(--text-primary); }
+.toc a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-header-inner">
+    <a href="index.html" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+      Viewer
+    </a>
+    <div class="logo">
+      <div class="logo-mark">T</div>
+      <div>
+        <div class="logo-title">태그 가이드</div>
+        <div class="logo-sub">12 라벨로 좋은 논문 알아보기</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <article>
+    <header class="article-header">
+      <h1>좋은 논문의 태그 공식</h1>
+      <p class="lead">A급 조합 vs 약한 조합</p>
+    </header>
+
+    <section>
+      <h2 id="summary">요약</h2>
+      <p>
+        좋은 논문은 <strong>단일 태그가 강한 논문이 아니라, 강한 태그 조합을 가진 논문</strong>이다.
+        단일 태그만으로는 좋은 논문이 되지 않는다. 단일 태그만 보고 고르는 선별은 실패한다.
+        이 글은 12개 태그를 강·약으로 정렬하고, A급 조합과 약한 조합을 명시한다.
+      </p>
+      <div class="toc">
+        <div class="toc-title">목차</div>
+        <ol>
+          <li><a href="#tags-12">12개 태그 정의</a></li>
+          <li><a href="#thesis">명제</a></li>
+          <li><a href="#tier-s">Tier S — 가장 강한 단일 태그</a></li>
+          <li><a href="#tier-a">Tier A — 결합으로 강해지는 태그</a></li>
+          <li><a href="#combos">A급 조합</a></li>
+          <li><a href="#weak">약한 조합</a></li>
+          <li><a href="#formula">좋은 논문의 공식</a></li>
+          <li><a href="#rules">운영 원칙</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="tags-12">1. 12개 태그 정의</h2>
+      <p class="muted">
+        논문 요약 옆에 붙는 갈색 라벨은 "이 논문을 왜 봐야 하는가"를 표시하는 의미 태그다.
+        한 논문에는 여러 개가 붙을 수 있고, 화면에서는 보통 핵심 2~3개만 남긴다.
+      </p>
+
+      <div class="tag-grid">
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-문제정의)">문제정의</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">문제정의</div>
+            <div class="tag-card-desc">새 문제·연구 질문을 세운다. "무엇을 풀어야 하는가" 자체를 바꾼다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-평가축)">평가축</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">평가축</div>
+            <div class="tag-card-desc">성능을 재는 기준을 바꾼다. 실패 조건, 제어 가능성, calibration.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-방법전환)">방법전환</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">방법전환</div>
+            <div class="tag-card-desc">같은 병목을 다른 formulation·구조로 푼다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-인프라)">인프라</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">인프라</div>
+            <div class="tag-card-desc">데이터셋·벤치마크·툴·평가 파이프라인을 만든다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-경고신호)">경고신호</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">경고신호</div>
+            <div class="tag-card-desc">failure mode·negative result·deployment risk를 드러낸다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-통합정리)">통합정리</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">통합정리</div>
+            <div class="tag-card-desc">survey·taxonomy로 분야의 현재 좌표를 잡는다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-스케일업)">스케일업</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">스케일업</div>
+            <div class="tag-card-desc">모델·데이터·embodiment·실험 수를 키운다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-실사용전환)">실사용전환</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">실사용전환</div>
+            <div class="tag-card-desc">latency·real-time·on-device·hardware·closed-loop을 직접 겨냥한다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-데이터전환)">데이터전환</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">데이터전환</div>
+            <div class="tag-card-desc">병목을 데이터 수집·정제·합성에서 푼다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-해부분석)">해부분석</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">해부분석</div>
+            <div class="tag-card-desc">모델의 mechanism·내부 표현·ablation을 뜯어본다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-표준후보)">표준후보</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">표준후보</div>
+            <div class="tag-card-desc">후속 논문이 계속 쓸 task·metric·protocol·benchmark를 제안한다.</div>
+          </div>
+        </div>
+        <div class="tag-card">
+          <div class="tag-card-chip" style="background:var(--tag-위험보류)">위험보류</div>
+          <div class="tag-card-body">
+            <div class="tag-card-name">위험보류</div>
+            <div class="tag-card-desc">baseline·split·ablation·공개성 때문에 claim 확인이 필요하다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="thesis">2. 명제</h2>
+      <blockquote>
+        좋은 논문은 강한 태그 하나가 아니라, <strong>강한 태그 조합</strong>으로 정의된다.
+      </blockquote>
+      <p>
+        단일 태그가 아무리 강해도, 다른 태그가 받쳐주지 않으면 빠르게 잊힌다.
+        반대로 약해 보이는 태그도 강한 조합 안에 들어가면 큰 영향력을 만든다.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="tier-s">3. Tier S — 가장 강한 단일 태그</h2>
+
+      <h3><span class="tier-label tier-S">S</span><span class="pill" style="background:var(--tag-문제정의)">문제정의</span></h3>
+      <p>가장 강하다. 새 모델보다 귀한 건 "이 문제를 이렇게 봐야 한다"를 바꾸는 논문이다. 잘 정의되면 후속 논문들이 전부 그 정의 위에서 움직인다.</p>
+
+      <h3><span class="tier-label tier-S">S</span><span class="pill" style="background:var(--tag-평가축)">평가축</span></h3>
+      <p>연구 커뮤니티는 결국 "무엇을 잘했다고 볼 것인가"에 끌려간다. 새 metric, failure condition, protocol이 설득력 있으면 방법 논문 수십 편보다 오래 간다.</p>
+
+      <h3><span class="tier-label tier-S">S</span><span class="pill" style="background:var(--tag-표준후보)">표준후보</span></h3>
+      <p>좋은 benchmark·dataset·task protocol은 오래 간다. 논문 자체가 화려하지 않아도, 비교표에 계속 올라가면 영향력이 누적된다.</p>
+
+      <h3><span class="tier-label tier-S">S</span><span class="pill" style="background:var(--tag-경고신호)">경고신호</span></h3>
+      <p>"지금 다들 믿고 있는 방식이 이 조건에서 무너진다"를 깨끗하게 보이는 논문은 분야의 방향 자체를 바꾼다.</p>
+    </section>
+
+    <section>
+      <h2 id="tier-a">4. Tier A — 결합으로 강해지는 태그</h2>
+
+      <h3><span class="tier-label tier-A">A</span><span class="pill" style="background:var(--tag-방법전환)">방법전환</span></h3>
+      <p>새 방법이 단순 튜닝이 아니라 문제를 다르게 푸는 방식이면 강하다. 단독으로는 묻히기 쉽다. "왜 중요한지"를 <span class="pill" style="background:var(--tag-평가축)">평가축</span> 또는 <span class="pill" style="background:var(--tag-경고신호)">경고신호</span>로 받쳐야 한다.</p>
+
+      <h3><span class="tier-label tier-A">A</span><span class="pill" style="background:var(--tag-실사용전환)">실사용전환</span></h3>
+      <p>로봇·SLAM·VLN에서는 결정적이다. 실제 로봇, latency, robustness, field deployment가 들어가면 현실 문제를 건드린 논문이다.</p>
+
+      <h3><span class="tier-label tier-A">A</span><span class="pill" style="background:var(--tag-인프라)">인프라</span></h3>
+      <p>좋은 인프라는 강하다. 단, 코드·시스템만 붙인 것은 약하다. <span class="pill" style="background:var(--tag-평가축)">평가축</span>·<span class="pill" style="background:var(--tag-표준후보)">표준후보</span>와 결합해야 무게가 생긴다.</p>
+    </section>
+
+    <section>
+      <h2 id="combos">5. A급 조합</h2>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <span class="combo-name">A1</span>
+          <div class="combo-tags">
+            <span class="pill" style="background:var(--tag-문제정의)">문제정의</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-평가축)">평가축</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-표준후보)">표준후보</span>
+          </div>
+        </div>
+        <div class="combo-desc"><strong>분야의 질문과 채점 기준을 같이 바꾸는 논문.</strong> 가장 오래 가는 형태. 후속 연구의 룰을 정한다.</div>
+        <a class="combo-cta" href="index.html#preset=A1">Viewer에서 보기 →</a>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <span class="combo-name">A2</span>
+          <div class="combo-tags">
+            <span class="pill" style="background:var(--tag-경고신호)">경고신호</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-평가축)">평가축</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-표준후보)">표준후보</span>
+          </div>
+        </div>
+        <div class="combo-desc"><strong>기존 방법이 무너지는 조건을 새 benchmark/protocol로 고정하는 논문.</strong> "이 조건에서 깨진다"를 그냥 주장하지 않고 측정 가능한 형태로 못 박는다.</div>
+        <a class="combo-cta" href="index.html#preset=A2">Viewer에서 보기 →</a>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <span class="combo-name">A3</span>
+          <div class="combo-tags">
+            <span class="pill" style="background:var(--tag-방법전환)">방법전환</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-실사용전환)">실사용전환</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-경고신호)">경고신호</span>
+          </div>
+        </div>
+        <div class="combo-desc"><strong>실제 배포에서 드러난 실패를 다른 방식으로 푸는 논문.</strong> 현실 문제 → 진단 → 새 접근의 사이클이 닫힌다.</div>
+        <a class="combo-cta" href="index.html#preset=A3">Viewer에서 보기 →</a>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <span class="combo-name">A4</span>
+          <div class="combo-tags">
+            <span class="pill" style="background:var(--tag-실사용전환)">실사용전환</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-인프라)">인프라</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-평가축)">평가축</span>
+          </div>
+        </div>
+        <div class="combo-desc"><strong>강한 시스템 논문.</strong> 구현 그 자체가 아니라, 실제 시스템에서 무엇을 재야 하는지까지 제안한다.</div>
+        <a class="combo-cta" href="index.html#preset=A4">Viewer에서 보기 →</a>
+      </div>
+
+      <div class="combo-card">
+        <div class="combo-header">
+          <span class="combo-name">A5</span>
+          <div class="combo-tags">
+            <span class="pill" style="background:var(--tag-인프라)">인프라</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-데이터전환)">데이터전환</span>
+            <span class="combo-plus">+</span>
+            <span class="pill" style="background:var(--tag-표준후보)">표준후보</span>
+          </div>
+        </div>
+        <div class="combo-desc"><strong>강한 데이터/벤치 논문.</strong> 후속 연구의 실험판 자체를 바꾼다.</div>
+        <a class="combo-cta" href="index.html#preset=A5">Viewer에서 보기 →</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="weak">6. 약한 조합</h2>
+      <table>
+        <thead>
+          <tr><th>단일 태그</th><th>약한 이유</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="pill" style="background:var(--tag-방법전환)">방법전환</span> 단독</td><td>새 방법인데 왜 중요한지 보이지 않는다.</td></tr>
+          <tr><td><span class="pill" style="background:var(--tag-인프라)">인프라</span> 단독</td><td>시스템은 붙었는데 연구 질문이 없다.</td></tr>
+          <tr><td><span class="pill" style="background:var(--tag-스케일업)">스케일업</span> 단독</td><td>키웠는데 insight가 없다.</td></tr>
+          <tr><td><span class="pill" style="background:var(--tag-통합정리)">통합정리</span> 단독</td><td>survey인데 새 관점이 없다.</td></tr>
+          <tr><td><span class="pill" style="background:var(--tag-위험보류)">위험보류</span>가 핵심으로 큼</td><td>아이디어는 있는데 검증이 불안하다.</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">이 패턴들은 인용은 받아도 분야의 방향을 바꾸지 못한다.</p>
+      <a class="combo-cta" href="index.html#preset=weak" style="margin-top:8px">약한 단독 패턴 Viewer에서 보기 →</a>
+    </section>
+
+    <section>
+      <h2 id="formula">7. 좋은 논문의 공식</h2>
+      <blockquote>
+        무엇을 문제로 봐야 하는지 바꾸고,<br>
+        그 문제를 어떻게 재야 하는지 제안하며,<br>
+        실제 실패 조건이나 배포 조건에서 그 필요성을 보여주는 논문.
+      </blockquote>
+
+      <div class="formula-final">
+        <div class="formula-final-label">FORMULA</div>
+        <div class="formula-final-tags">
+          <span class="pill" style="background:var(--tag-문제정의)">문제정의</span>
+          <span class="op">+</span>
+          <span class="pill" style="background:var(--tag-평가축)">평가축</span>
+          <span class="op">+</span>
+          <span style="font-family:'Roboto Mono',monospace;color:var(--text-secondary)">(</span>
+          <span class="pill" style="background:var(--tag-경고신호)">경고신호</span>
+          <span class="op">or</span>
+          <span class="pill" style="background:var(--tag-실사용전환)">실사용전환</span>
+          <span style="font-family:'Roboto Mono',monospace;color:var(--text-secondary)">)</span>
+        </div>
+        <div class="formula-final-note">이 조합이 붙어 있으면, 그 논문은 좋은 논문일 확률이 높다.<br>이 조합이 없으면, 단일 태그가 아무리 강해도 의심하라.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="rules">8. 운영 원칙</h2>
+      <ol>
+        <li><strong>단일 태그 강도로 논문을 고르지 않는다.</strong> 조합으로 본다.</li>
+        <li><strong><span class="pill" style="background:var(--tag-방법전환)">방법전환</span>·<span class="pill" style="background:var(--tag-인프라)">인프라</span>·<span class="pill" style="background:var(--tag-스케일업)">스케일업</span>·<span class="pill" style="background:var(--tag-통합정리)">통합정리</span>가 단독으로 붙은 논문은 보류한다.</strong></li>
+        <li><strong><span class="pill" style="background:var(--tag-문제정의)">문제정의</span> 또는 <span class="pill" style="background:var(--tag-평가축)">평가축</span>이 없는 논문은 장기 영향력을 기대하지 않는다.</strong></li>
+        <li><strong><span class="pill" style="background:var(--tag-위험보류)">위험보류</span>가 핵심 태그로 올라온 논문은 claim을 직접 검증하기 전까지 인용·결론을 신뢰하지 않는다.</strong></li>
+      </ol>
+    </section>
+
+  </article>
+</main>
+
+</body>
+</html>
