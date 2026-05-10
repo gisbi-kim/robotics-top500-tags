@@ -1,5 +1,7 @@
 # robotics-top500-tags
 
+Live explorer: [https://gisbi-kim.github.io/robotics-top500-tags/](https://gisbi-kim.github.io/robotics-top500-tags/)
+
 12-tag taxonomy + tag-combination explorer for the top-500 cited robotics papers (2010–2026).
 
 > 좋은 논문은 단일 태그가 아니라 **강한 태그 조합**으로 정의된다.
