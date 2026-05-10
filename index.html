@@ -1274,7 +1274,11 @@ function renderTopCombos(size) {
 }
 
 function applyComboPreset(tags) {
-  STATE.selectedTags = new Set(tags);
+  const isSameCombo =
+    STATE.tagMode === 'all' &&
+    STATE.selectedTags.size === tags.length &&
+    tags.every(t => STATE.selectedTags.has(t));
+  STATE.selectedTags = isSameCombo ? new Set() : new Set(tags);
   STATE.tagMode = 'all';
   STATE.soloOnly = false;
   STATE.shown = STATE.pageSize;
